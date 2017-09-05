@@ -1,0 +1,28 @@
+
+d={'ibook':10000}
+
+print d.values()
+
+
+
+# shopping={
+#     {  'phone':5000},
+#     { 'ibook': 9000}
+# }
+
+
+class test:
+    def f1(self):
+        print "f1"
+
+    def f2(self):
+        print "f2"
+
+a = test()
+a.f1()
+
+input = raw_input("input something:")
+print hasattr(a, input)
+getattr(a, input)()
+# aa = getattr(a, input)
+# print aa()   None
