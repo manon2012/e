@@ -1,0 +1,29 @@
+
+
+mysql --user=readonlyuser -p
+
+CREATE USER 'readonly'@'%' IDENTIFIED BY 'readonly';
+
+GRANT SELECT ON *.* TO 'readonly'@'%';
+
+
+
+SELECT host,user FROM mysql.user;
+
+
+
+
+
+show database;
+
+use l2tools;
+
+
+show tables;
+
+
+mysql --user=readonlyuser -p -h 10.55.15.87
+
+CREATE USER 'readonlyuser'@'%' IDENTIFIED BY 'readonlyuser';
+
+GRANT SELECT ON l2tools.* TO 'readonlyuser'@'%';

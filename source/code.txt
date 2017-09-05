@@ -1,0 +1,37 @@
+1 #!/usr/bin/env python
+2
+3 from time import time
+4
+5 def logged(when):
+6 def log(f, *args, **kargs):
+7 print '''Called:
+8 function: %s
+9 args: %r
+10 kargs: %r''' % (f, args, kargs)
+11
+12 def pre_logged(f):
+13 def wrapper(*args, **kargs):
+14 log(f, *args, **kargs)
+15 return f(*args, **kargs)
+16 return wrapper
+17
+18 def post_logged(f):
+19 def wrapper(*args, **kargs):
+20 now = time()
+21 try:
+22 return f(*args, **kargs)
+23 finally:
+24 log(f, *args, **kargs)
+25 print "time delta: %s" % (time()-now)
+26 return wrapper
+27
+28 try:
+29 return {"pre": pre_logged,
+30 "post": post_logged}[when]
+31 except KeyError, e:
+32 raise ValueError(e), 'must be "pre" or "post"'
+33
+34 @logged("post")
+35 def hello(name):
+36 print "Hello,", name
+

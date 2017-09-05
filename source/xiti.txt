@@ -1,0 +1,128 @@
+http://python.jobbole.com/83641/
+
+一些简单的测试题, 主要来源是网上:)
+
+某种程度, 可以从代码中看出一些东西
+
+1. 编写代码, 打印1-1亿之内的偶数
+2. 写一个函数, 用正则表达式清除字符串中[]和其中的内容。
+
+Python
+
+s = "[lol]你好，帮我把这些markup清掉，[smile]。谢谢！"
+1
+s = "[lol]你好，帮我把这些markup清掉，[smile]。谢谢！"
+ 3. 请使用python, 对下面的函数进行处理，
+
+Python
+
+def hello(name):
+    print "hello, %s" % name
+1
+2
+def hello(name):
+    print "hello, %s" % name
+在函数被调用时打印耗时详情
+
+Python
+
+<function name: hello>
+<function call begin>
+hello, tom
+<function call end>
+[timecosts: 3.81469726562e-06s]
+1
+2
+3
+4
+5
+<function name: hello>
+<function call begin>
+hello, tom
+<function call end>
+[timecosts: 3.81469726562e-06s]
+4. 写一个函数, 将驼峰命名法字符串转成下划线命名字符串(需考虑各类编码中常见的命名)
+
+Python
+
+e.g.  GetItem -> get_item
+      getItem -> get_item
+      doIT    -> do_IT
+1
+2
+3
+e.g.  GetItem -> get_item
+      getItem -> get_item
+      doIT    -> do_IT
+5. 有一个列表：[1, 2, 3, 4…n]，n=20；请编写代码打印如下规律的输出：
+
+Python
+
+1 [1*, 2, 3, 4, 5]
+2 [1, 2*, 3, 4, 5]
+3 [1, 2, 3*, 4, 5]
+4 [2, 3, 4*, 5, 6]
+5 [3, 4, 5*, 6, 7]
+6 [4, 5, 6*, 7, 8]
+...
+
+20 [16, 17, 18, 19, 20*]
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1 [1*, 2, 3, 4, 5]
+2 [1, 2*, 3, 4, 5]
+3 [1, 2, 3*, 4, 5]
+4 [2, 3, 4*, 5, 6]
+5 [3, 4, 5*, 6, 7]
+6 [4, 5, 6*, 7, 8]
+...
+ 
+20 [16, 17, 18, 19, 20*]
+6. 写一个程序模拟银行排队, 只有一个队伍, 一个用户进入时允许插队(进入队伍任意位置), 但要保证每次导致队伍变更, 队伍中受影响的人都收到通知
+
+Python
+
+Customer A line up at position 11
+Customer B: order changed to 12
+Customer C: order changed to 13
+Customer D: order changed to 14
+1
+2
+3
+4
+Customer A line up at position 11
+Customer B: order changed to 12
+Customer C: order changed to 13
+Customer D: order changed to 14
+7. 用户系统, 存在相互关注的动作, 当进入某个人的个人主页, 需要展示其粉丝数, 关注数, 粉丝列表以及关注列表. 请简要描述解决方案, 包括db建模/数据层/业务层, 以及应对高并发/关注取关等情况的处理逻辑
+
+8. 给定一些NxN的矩阵，对于任意的路线，定义其【和】为其线路上所有节点的数字的和，计算从左上角到右下角的路线和最小值。每条路线只能从某一点到其周围（上下左右）的点，不可斜行。 例如，
+
+Python
+
+4,6
+2,8 的路线和最小值为 4-2-8 14
+
+1,2,3
+4,5,6
+7,8,9 的路线和最小值为 1-2-3-6-9 21
+1
+2
+3
+4
+5
+6
+4,6
+2,8 的路线和最小值为 4-2-8 14
+ 
+1,2,3
+4,5,6
+7,8,9 的路线和最小值为 1-2-3-6-9 21
+程序只需输出最小和值即可（一个数字）
