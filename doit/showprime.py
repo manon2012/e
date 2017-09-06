@@ -1,12 +1,13 @@
 
 def showprime(x):
     lista=[]
-    for i in range(1,x):
-        for ii in range(1,i):
+    for i in range(2,x):
+        for ii in range(2,i):
             if i%ii==0:
-                pass
-            else:
-                lista.append(i)
-    print lista
+                break
+        else:
+            lista.append(i)
+    return lista
 
-showprime(10)
+listb=showprime(100)
+print len(listb)
