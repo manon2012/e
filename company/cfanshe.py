@@ -1,5 +1,11 @@
 import cfanshe2
 
+cfanshe2.f1()
+
+print hasattr(cfanshe2,"f1")
+
+ff1= getattr(cfanshe2,"f1")
+ff1()
 
 
 
