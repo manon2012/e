@@ -58,4 +58,4 @@ while True:
         print k,v
     
     choice = raw_input("please enter your choice:")
-    print a3cdict[choice]
+    print a3cdict[a3cdict]
