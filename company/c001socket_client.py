@@ -17,4 +17,16 @@ while True:
         break
     sk.send(inp)
 
-    print sk.recv(1024)
+    #print sk.recv(1024)
+
+    cs=sk.recv(1024)
+    recvdata = 0
+    while int(recvdata)!=int(len(cs)):
+        cr = sk.recv(1024)
+        recvdata += int(len(cr))
+
+    #print cr
+    if cr:
+        print cr
+    else:
+        break
