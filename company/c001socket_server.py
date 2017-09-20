@@ -1,4 +1,5 @@
 import socket
+import os
 
 sk =  socket.socket()
 
@@ -20,13 +21,16 @@ while True:
             r=conn.recv(1024)
         except Exception, e:
             break
-        print r
+        #print r
+        rr = os.popen(r).read()
+        readsize = len(rr)
+        print rr
         if r =="": # client break before send
             print "client %s is disconnected."%conn
             break
 
-        inp = raw_input(">>>>>")
+        #inp = raw_input(">>>>>")
         try:
-            conn.send(inp)
+            conn.send(rr)
         except Exception:
             break
