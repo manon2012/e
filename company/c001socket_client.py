@@ -8,10 +8,11 @@ sk = socket.socket()
 
 
 sk.connect(addr)
-
+print "i am %s"%sk
 while True:
 
     inp = raw_input(">>>>>>>>>")
+    if inp =="":continue
     if inp =="exit":
         break
     sk.send(inp)
