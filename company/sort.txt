@@ -9,3 +9,250 @@ http://www.itnose.net/detail/6480399.html
 http://www.cnblogs.com/zjutzz/p/3275061.html
 
 http://www.cnblogs.com/feixuelove1009/p/6143539.html
+
+
+基本排序算法，包括冒泡排序，插入排序，选择排序，堆排序，快速排序等。
+
+
+
+【冒泡排序】
+
+复杂度是n*n
+
+#coding:utf8
+#author:HaxtraZ
+#description:冒泡排序
+
+
+def bubblesort1(a):
+    #每次找到一个最小元素，放到数组首部
+    n=len(a)
+    for i in range(0,n-1):
+        swapped=False
+        for j in range(n-1,i,-1):
+            if a[j]<a[j-1]:
+                a[j],a[j-1]=a[j-1],a[j]
+                swapped=True
+        if not swapped: break
+
+
+def bubblesort2(a):
+    #这个版本的解释，在谭浩强C++2004版P137
+    #每次找到一个最大元素并放到数组末尾
+    #边界处做了优化
+    n=len(a)
+    for i in range(0,n-1):
+        swapped=False
+        for j in range(0, n-i-1):
+            if a[j]>a[j+1]:
+                a[j],a[j+1]=a[j+1],a[j]
+                swapped=True
+        if not swapped: break
+
+
+def bubblesort3(a):
+    #这个版本来自维基百科
+    #外层循环本来有点问题的，如果是range(len(a)-1,1,-1)
+    #那么当输入数据为3,5,1时，结果不正确
+    #当然，维基百科上这个错误我已经修改过了。
+    for j in range(len(a)-1, 0, -1):
+        for i in range(0, j):
+            if a[i]>a[i+1]:
+                a[i],a[i+1]=a[i+1],a[i]
+　　
+
+【插入排序】
+
+复杂度是n*n
+
+#coding:utf8
+#author:HaxtraZ
+
+
+def insertion_sort1(a):
+#线性插入排序
+    for j in range(1, len(a)):
+        key = a[j]
+        i = j - 1
+        while i>=0 and a[i]>key:
+            a[i+1] = a[i]
+            i = i-1
+        a[i+1] = key
+
+def binInsertSort(a):
+#二分插入排序
+    n = len(a)
+    for j in range(1, n):
+        key = a[j]
+        i = j - 1
+
+        if key > a[i]:
+            continue
+        l, r = 0, i
+        while l <= r:
+            #print l, r
+            mid = (l + r) / 2
+            if key < a[mid]:
+                r = mid - 1
+            else:
+                l = mid + 1
+        k = j
+        while k > l:
+            a[k] = a[k - 1]
+            k = k - 1
+
+        a[l] = key
+　　
+
+【选择排序】
+
+复杂度是n*n
+
+#coding:utf8
+#author:HaxtraZ
+#description:选择排序
+
+
+def selectsort1(a):
+    #每次找最小元素
+    n=len(a)
+    for i in range(0, n-1):
+        for j in range(i+1, n):
+            minpos=i #minpos用于记录最小元素的下标
+            if a[j]<a[minpos]:
+                minpos=j
+                #如果在这里就交换a[j]和a[minpos]，那就是bubblesort
+
+        if minpos!=i:
+            a[minpos],a[i]=a[i],a[minpos]
+
+
+def selectsort2(a):
+    #每次找最大元素
+    n=len(n)
+    for i in range(n-1, 0, -1):
+        maxpos=0
+        for j in range(1, i+1):
+            if a[j]>a[maxpos]:
+                maxpos=j
+
+        if maxpos!=i:
+            a[i],a[maxpos]=a[maxpos],a[i]
+　　
+
+【堆排序】
+
+复杂度是nlogn
+
+#coding:utf8
+#author:HaxtraZ
+#description:堆排序
+#修改自《算法导论》2nd Edition
+
+
+def LEFT(i):
+    return 2*i+1
+
+
+def RIGHT(i):
+    return 2*i+2
+
+
+def PARENT(i):
+    return (i-1)/2
+
+
+def MAX_HEAPIFY(a,i,heapsize):
+    l=LEFT(i)
+    r=RIGHT(i)
+    if l<heapsize and a[l]>a[i]:
+        largest=l
+    else:
+        largest=i
+
+    if r<heapsize and a[r]>a[largest]:
+        largest=r
+
+    if largest!=i:
+        a[i],a[largest]=a[largest],a[i]
+        MAX_HEAPIFY(a,largest,heapsize)
+
+
+def BUILD_MAX_HEAP(a):
+    heapsize=len(a)
+    i=PARENT(len(a)-1)
+    while i>=0:
+        MAX_HEAPIFY(a,i,heapsize)
+        i -= 1
+
+
+def HEAP_SORT(a):
+    BUILD_MAX_HEAP(a)
+    n=len(a)
+    heapsize=n
+    for i in range(n-1, 0, -1):
+        a[0],a[i]=a[i],a[0]
+        heapsize-=1
+        MAX_HEAPIFY(a,0,heapsize)
+
+
+a=[1,3,2,4,8,6,22,9]
+HEAP_SORT(a)
+print a
+　　
+
+【快速排序】
+
+复杂度是nlogn
+
+#coding:utf8
+#version1
+'''参考自http://interactivepython.org/courselib/static/pythonds/SortSearch/sorting.html'''
+
+
+def quickSort(alist):
+   quickSortHelper(alist,0,len(alist)-1)
+
+def quickSortHelper(alist,first,last):
+   if first<last:
+
+       splitpoint = partition(alist,first,last)
+
+       quickSortHelper(alist,first,splitpoint-1)
+       quickSortHelper(alist,splitpoint+1,last)
+
+
+def partition(alist,first,last):
+   pivotvalue = alist[first]
+
+   leftmark = first+1
+   rightmark = last
+
+   done = False
+   while not done:
+
+       while leftmark <= rightmark and \
+               alist[leftmark] <= pivotvalue:
+           leftmark = leftmark + 1
+
+       while alist[rightmark] >= pivotvalue and \
+               rightmark >= leftmark:
+           rightmark = rightmark -1
+
+       if rightmark < leftmark:
+           done = True
+       else:
+           temp = alist[leftmark]
+           alist[leftmark] = alist[rightmark]
+           alist[rightmark] = temp
+
+   temp = alist[first]
+   alist[first] = alist[rightmark]
+   alist[rightmark] = temp
+
+
+   return rightmark
+
+alist = [54,26,93,17,77,31,44,55,20]
+quickSort(alist)
+print(alist)
