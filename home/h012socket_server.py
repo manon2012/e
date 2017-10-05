@@ -5,7 +5,20 @@ ser = socket.socket()
 ser.bind(('localhost',2000))
 ser.listen(3)
 
-conn,addr = ser.accept()
+while True:
+    
+    conn,addr = ser.accept()
 
-data=conn.recv(1024)
-conn.send(data.upper())
+    while True:
+        try:
+            data=conn.recv(1024)
+        except Exception,e:
+            print e
+            break
+        else:
+            if data=="":break
+            else:print data
+        data=raw_input(">>")
+        conn.send(data)
+
+

@@ -2,8 +2,12 @@ import socket
 
 conn= socket.socket()
 
-conn.connect('localhost',2000)
+conn.connect(('localhost',2000))
 
-conn.send("hihi")
+while True:
+    data= raw_input(">>")
+    if data == "": continue
+    if data == "exit": break
+    conn.send(data)
 
-print conn.recv(1024)
+    print conn.recv(1024)
