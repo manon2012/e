@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blog</title>
+</head>
+<body>
+
+<h1>welcome to  blog</h1>
+
+<form action="index.html" method="post">
+    姓名：<input type="text"  name="name">
+    <br>
+    标题：<input type="text"  name="title">
+    <br>
+    内容:  <textarea name="content"></textarea>
+    <br>
+    <input type="submit" value="add">
+
+</form>
+
+<table border="1" bgcolor="#f0ffff">
+    <tr>
+        <td>name</td>
+        <td>title</td>
+        <td>content</td>
+
+    </tr>
+
+
+        {% for i in alist %}
+         <tr>
+         <td>{{ i.name }}</td>
+         <td>{{ i.title }}</td>
+         <td>{{ i.content}}</td>
+        </tr>
+        {% endfor %}
+
+
+</table>
+
+
+
+
+</body>
+</html>
