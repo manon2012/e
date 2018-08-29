@@ -9,3 +9,4 @@ def add(x,y):
 	
 	
 print add(1,2)
+print "test"
