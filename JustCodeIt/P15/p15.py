@@ -115,6 +115,14 @@ class Teacher:
 
 T1 = Teacher('T1','man',Birthday(2000,01),Course('python',10000))
 
+b1=Birthday(1990,01)
+c1=Course('GO',1)
+T2 = Teacher('T2','boy',b1,c1)
+print '$$$$$$$$$$'
+print T2.__dict__
+print T2.birth.year
+print T2.course.name
+
 print dir(T1)
 print T1.birth.year
 print T1.course.name
